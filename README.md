@@ -66,5 +66,11 @@ L'attacco si articola in più fasi, come segue:
 > È vietato l’utilizzo su sistemi reali senza autorizzazione esplicita.
 > L'autore declina ogni responsabilità per eventuali abusi.
 
+
+## 🤙🏻 Realizzato da
+
+> Andrea Bertolero
+> Luca Pisani
+
 ---
 
