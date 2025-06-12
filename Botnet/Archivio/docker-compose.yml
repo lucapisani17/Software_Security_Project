@@ -1,0 +1,40 @@
+version: '3'
+services:
+  target:
+    build: ./target
+    ports:
+      - "9999:9999"
+    networks:
+      - botnet
+    volumes:
+      - logs:/logs
+
+  c2:
+    build: ./c2
+    ports:
+      - "5001:5000"
+      - "9000:9000"  # <--- ESPONE il socket TCP per i bot
+
+    networks:
+      - botnet
+    volumes:
+      - logs:/logs
+
+  bot1:
+    build: ./bot
+    networks:
+      - botnet
+  bot2:
+    build: ./bot
+    networks:
+      - botnet
+  bot3:
+    build: ./bot
+    networks:
+      - botnet
+
+networks:
+  botnet:
+
+volumes:
+  logs:

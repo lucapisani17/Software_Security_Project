@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scarica Pokémon Platino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ffd700;
+      --secondary: #ff416c;
+      --tertiary: #4b6cb7;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+      font-family: 'Press Start 2P', cursive;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .logo {
+      margin: 20px 0;
+      max-width: 200px;
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      z-index: 1;
+      border: 2px solid var(--primary);
+      backdrop-filter: blur(5px);
+      margin: 20px 0;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 25px;
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      position: relative;
+    }
+
+    h1::after {
+      content: "";
+      display: block;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      margin: 15px auto;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 30px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .cover {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+      transition: transform 0.5s;
+      border: 3px solid var(--primary);
+    }
+
+    .cover:hover {
+      transform: scale(1.03) rotate(1deg);
+    }
+
+    .download-button {
+      text-decoration: none;
+      background: linear-gradient(90deg, var(--secondary), #ff4b2b);
+      color: white;
+      padding: 16px 35px;
+      border-radius: 30px;
+      font-size: 16px;
+      display: inline-block;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(255, 65, 108, 0.6);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+
+    .download-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 25px rgba(255, 75, 43, 0.8);
+    }
+
+    .download-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .download-button:hover::before {
+      left: 100%;
+    }
+
+    .pokeball {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="5"/><circle cx="50" cy="50" r="20" fill="white"/><path d="M5,50 H95" stroke="white" stroke-width="5"/></svg>');
+      background-size: contain;
+      opacity: 0.3;
+      animation: float 15s infinite linear;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(50vw, 30vh) rotate(90deg); }
+      50% { transform: translate(0, 60vh) rotate(180deg); }
+      75% { transform: translate(-50vw, 30vh) rotate(270deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .feature:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .feature::before {
+      content: "✓";
+      color: var(--primary);
+      margin-right: 8px;
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      background-color: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    /* Footer styles */
+    footer {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px 0;
+      margin-top: auto;
+      border-top: 1px solid var(--primary);
+      font-size: 10px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .footer-section h3 {
+      color: var(--primary);
+      font-size: 12px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--primary);
+      padding-bottom: 5px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-section ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--primary);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: #ccc;
+      font-size: 16px;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #888;
+      font-size: 9px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+      }
+      
+      .footer-section {
+        text-align: center;
+      }
+      
+      .social-icons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  
+  <!-- Pokeballs floating in background -->
+  <div class="pokeball" style="top: 10%; left: 5%;"></div>
+  <div class="pokeball" style="top: 70%; left: 80%; animation-delay: -3s;"></div>
+  <div class="pokeball" style="top: 30%; left: 90%; animation-delay: -7s;"></div>
+  <div class="pokeball" style="top: 80%; left: 10%; animation-delay: -10s;"></div>
+
+  <!-- Logo -->
+  <!--<img src="logo.png" alt="PokéForum" class="logo animate__animated animate__fadeInDown">-->
+
+  <div class="container animate__animated animate__fadeIn">
+    <h1 class="animate__animated animate__pulse animate__infinite animate__slower">SCARICA POKÉMON PLATINO</h1>
+    <img src="copertina.png" alt="Copertina Pokémon Platino" class="cover animate__animated animate__zoomIn">
+    
+    <div class="features">
+      <div class="feature">Versione completa</div>
+      <div class="feature">Ottimizzato</div>
+      <div class="feature">Nessun virus</div>
+      <div class="feature">Supporto 24/7</div>
+    </div>
+    
+    <p>Preparati a vivere un'avventura epica nella regione di Sinnoh! Pokémon Platino offre nuove sfide, Pokémon leggendari e unici.</p>
+    
+    <a href="http://localhost:8000/Pokemon - Versione Platino (IT) + DeSmuME Emulator.zip" class="download-button pulse" download>
+      <span>SCARICA ORA</span>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>INFORMAZIONI</h3>
+        <ul>
+          <li><a href="#">Chi siamo</a></li>
+          <li><a href="#">Regolamento</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>COMMUNITY</h3>
+        <ul>
+          <li><a href="#">Forum</a></li>
+          <li><a href="#">Gruppi</a></li>
+          <li><a href="#">Eventi</a></li>
+          <li><a href="#">Classifiche</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>SUPPORTO</h3>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Guide</a></li>
+          <li><a href="#">Contattaci</a></li>
+          <li><a href="#">Segnala bug</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>SEGUICI</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p style="margin-top: 15px; color: #888;">Unisciti alla nostra community di allenatori Pokémon!</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      © 2023 PokéForum - Tutti i diritti riservati. Pokémon e i relativi nomi sono marchi registrati di Nintendo, Game Freak e The Pokémon Company.
+    </div>
+  </footer>
+
+  <script>
+    // Create twinkling stars
+    document.addEventListener('DOMContentLoaded', function() {
+      const starsContainer = document.getElementById('stars');
+      const starsCount = 100;
+      
+      for (let i = 0; i < starsCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // Random size between 1 and 3px
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        // Random position
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        // Random animation delay
+        star.style.animationDelay = `${Math.random() * 2}s`;
+        
+        starsContainer.appendChild(star);
+      }
+      
+      // Add hover effect to container
+      const container = document.querySelector('.container');
+      container.addEventListener('mouseenter', () => {
+        container.style.boxShadow = '0 10px 30px rgba(255, 215, 0, 0.5)';
+      });
+      container.addEventListener('mouseleave', () => {
+        container.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.8)';
+      });
+    });
+  </script>
+</body>
+</html>
