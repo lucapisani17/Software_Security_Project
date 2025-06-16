@@ -57,7 +57,7 @@ L'attacco si articola in più fasi, come segue:
 ## 🎓 Obiettivi Didattici
 
 * Comprendere le tecniche di ingegneria sociale
-* Analizzare le metodologie di persistence e privilege escalation
+* Esplorare i possibili attacchi possibili dopo aver ottenuto il controllo di una vittima
 * Simulare una botnet e comprendere il funzionamento di attacchi DDoS
 
 ## 🚨 Avvertenze Legali
@@ -69,8 +69,8 @@ L'attacco si articola in più fasi, come segue:
 
 ## 🤙🏻 Realizzato da
 
-> Andrea Bertolero
-> Luca Pisani
+> Andrea Bertolero.
+> Luca Pisani.
 
 ---
 
