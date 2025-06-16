@@ -1,7 +1,7 @@
 # 🛡️ Software Security Attack Chain – Project
 
 <p align="center">
-  <img src="assets/attack-chain.png" alt="Attack Chain Diagram" width="500"/>
+  <img src="attack-chain.png" alt="Attack Chain Diagram" width="500"/>
 </p>
 
 > **Disclaimer:** Questo progetto è stato realizzato a scopo **puramente didattico** nell’ambito del corso di *Software Security*. Non deve essere utilizzato al di fuori di ambienti controllati o per fini illeciti. L’autore non si assume alcuna responsabilità per un uso improprio.
